@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <META HTTP-EQUIV="Expires" CONTENT="0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>菜乐购-APP下载</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: '微软雅黑';
+      }
+
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        position: relative;
+        background-color: #58aa32;
+        background-image: url(./images/header-img.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      header {
+        padding-top: 8%;
+      }
+
+      .cl-clear {
+        zoom: 1;
+      }
+
+      .cl-clear:after {
+        display: block;
+        content: '';
+        clear: both;
+        visibility: hidden;
+        height: 0;
+      }
+
+      .logo {
+        font-size: 0;
+        text-align: center;
+      }
+
+      .title {
+        margin-top: 5%;
+      }
+
+      .title p {
+        text-align: center;
+        font-size: 20px;
+        color: #ffffff;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 16%;
+        background: #cfcfcf;
+      }
+
+      .footer-item {
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+
+      .footer-item a {
+        position: relative;
+        display: inline-block;
+        height: 48px;
+        line-height: 48px;
+        width: 150px;
+        left: 50%;
+        top: 30%;
+        margin-left: -75px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
+      .footer-item a.btn1 {
+        background: #ffffff;
+        color: #58aa32;
+        border: 1px solid #58aa32;
+        border-radius: 5px;
+      }
+
+      .footer-item a.btn2 {
+        background: #58aa32;
+        color: #ffffff;
+        border: 1px solid #58aa32;
+        border-radius: 5px;
+      }
+
+      div.wechatpop {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9;
+      }
+
+      div.wechatpop > span {
+        display: block;
+        margin: 15% 5% 0 14%;
+        height: 100%;
+        background: url(/portal/images/wechatpop.png) no-repeat center top;
+        background-size: 100%;
+      }
+
+      .loading {
+        display: none;
+        position: fixed;
+        pointer-events: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0.3;
+        padding: 75% 0;
+        z-index: 199;
+        text-align: center;
+      }
+
+      .loading > span {
+        color: #fff;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="footer-bg"></div>
+    <div class="wechatpop">
+      <!-- <img src="static/images/wechatpop.png" alt="提示浏览器打开"> -->
+      <span></span>
+    </div>
+    <header>
+      <div class="logo">
+        <img src="./images/logo.png" />
+      </div>
+      <div class="title">
+        <p>互联网+供应链+金融+物流结合</p>
+      </div>
+    </header>
+    <footer class="cl-clear">
+      <div class="footer-item">
+        <a id="shd" class="btn1" href="javascript:;">商户端下载</a>
+      </div>
+      <div class="footer-item">
+        <a id="yyd" class="btn2" href="javascript:;">运营端下载</a>
+      </div>
+    </footer>
+    <div class="loading">
+      <span>加载中...</span>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        var shareEndClientId = GetQueryString('shareEndClientId');
+        var shareUserId = GetQueryString('shareUserId');
+        //var url = "http://dfz.dph168.com/web/partner/goShare?shareEndClientId=" + shareEndClientId + "&shareUserId=" + shareUserId;
+        //$("#register").attr("href", url)
+        // getDownloadUrl()
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          // 商户端
+          $('#shd').attr('href', "javascript:$('.wechatpop').fadeIn();");
+          // 配送端
+          // $('#psd').attr('href', "javascript:$('.wechatpop').fadeIn();");
+          // 运营端
+          $('#yyd').attr('href', "javascript:$('.wechatpop').fadeIn();");
+        } else {
+          if (/iphone|ipad|ipod/.test(ua)) {
+            // 商户端
+            $('#shd').attr(
+              'href',
+              'https://itunes.apple.com/cn/app/id1108354243'
+            );
+            // 销售端
+            // $('#psd').attr(
+            //   'href',
+            //   'https://itunes.apple.com/cn/app/id1239257350'
+            // );
+            // 运营端
+            $('#yyd').attr(
+              'href',
+              'https://itunes.apple.com/cn/app/id1182844562'
+            );
+            //} else if (/android/.test(ua)) {
+          } else {
+            // 商户端
+            // $("#shd").attr("href", "http://www.dph168.com/downloads/servicer-v2.4.1-31-20170701.apk")
+            //     // 销售端
+            // $("#psd").attr("href", "http://www.dph168.com/downloads/saler-v1.0.3-3-20170703.apk")
+            //     // 运营端
+            // $("#yyd").attr("href", "http://www.dph168.com/downloads/partner-v2.2.5-25-20170629.apk")
+            getDownloadUrl();
+          }
+        }
+      });
+
+      function getDownloadUrl() {
+        $('.loading').show();
+        $.ajax({
+          url: 'https://boss.dph168.com/api/common/getDownloadUrl',
+          type: 'GET',
+          dataType: 'jsonp',
+          jsonp: 'callbackParam',
+          jsonpCallback: 'success_jsonpCallback',
+          contentType: 'application/json; charset=utf-8',
+          success: function(json) {
+            $('.loading').hide();
+            if (json.state === 'success') {
+              for (var i = 0, j = json.url; i < j.length; i++) {
+                if (j[i].app_clients_type === 'servicer') {
+                  $('#shd').attr('href', j[i].url);
+                } else if (j[i].app_clients_type === 'saler') {
+                  $('#psd').attr('href', j[i].url);
+                } else if (j[i].app_clients_type === 'partner') {
+                  $('#yyd').attr('href', j[i].url);
+                } else {
+                  console.log('未定义的userType，请添加后重试！');
+                }
+              }
+            }
+          },
+          error: function() {
+            $('.loading').hide();
+            alert('网络异常，请刷新重试！');
+          }
+        });
+      }
+
+      function GetQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+
+        var r = window.location.search.substr(1).match(reg);
+
+        if (r != null) return unescape(r[2]);
+        return '';
+      }
+    </script>
+  </body>
+</html>
