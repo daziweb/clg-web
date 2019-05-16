@@ -110,16 +110,18 @@
       }
 
       div.wechatpop {
+        position: relative;
         display: none;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.8);
         z-index: 9;
       }
 
       div.wechatpop > span {
         display: block;
-        margin: 15% 5% 0 14%;
+        margin: 0 5% 0 14%;
         height: 100%;
-        background: url(/portal/images/wechatpop.png) no-repeat center top;
+        background: url(./images/wechatpop.png) no-repeat center top;
         background-size: 100%;
       }
 
@@ -146,7 +148,7 @@
   </head>
 
   <body>
-    <div class="footer-bg"></div>
+    <!-- <div class="footer-bg"></div> -->
     <div class="wechatpop">
       <!-- <img src="static/images/wechatpop.png" alt="提示浏览器打开"> -->
       <span></span>
@@ -219,7 +221,7 @@
       function getDownloadUrl() {
         $('.loading').show();
         $.ajax({
-          url: 'https://boss.dph168.com/api/common/getDownloadUrl',
+          url: 'http://version.cailgou.com/api/getDownloadUrl',
           type: 'GET',
           dataType: 'jsonp',
           jsonp: 'callbackParam',
